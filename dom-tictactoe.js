@@ -49,6 +49,8 @@ const checkForWin = () => {
   if (horizontalWin() || verticalWin() || diagonalWin()) {
     // **BONUS** you could make the dismissal of this alert window reset the board...
     window.alert(`Player ${currentMarker} won!`);
+  } else if (document.getElementsByTagName("td").innerHTML == ("X" | "O")) {
+    window.alert(`Cat's Game!`);
   } else {
     // if no win, change the marker from X to O, or O to X for the next player.
     changeMarker();
@@ -60,16 +62,19 @@ const horizontalWin = () => {
     (board[0][0] == "X" && board[0][1] == "X" && board[0][2] == "X") ||
     (board[0][0] == "O" && board[0][1] == "O" && board[0][2] == "O")
   ) {
+    console.log("horizontalWin1");
     return true;
   } else if (
     (board[1][0] == "X" && board[1][1] == "X" && board[1][2] == "X") ||
     (board[1][0] == "O" && board[1][1] == "O" && board[1][2] == "O")
   ) {
+    console.log("horizontalWin2");
     return true;
   } else if (
     (board[2][0] == "X" && board[2][1] == "X" && board[2][2] == "X") ||
     (board[2][0] == "O" && board[2][1] == "O" && board[2][2] == "O")
   ) {
+    console.log("horizontalWin3");
     return true;
   } else {
     return false;
@@ -81,16 +86,19 @@ const verticalWin = () => {
     (board[0][0] == "X" && board[1][0] == "X" && board[2][0] == "X") ||
     (board[0][0] == "O" && board[1][0] == "O" && board[2][0] == "O")
   ) {
+    console.log("verticalWin1");
     return true;
   } else if (
     (board[0][1] == "X" && board[1][1] == "X" && board[2][1] == "X") ||
     (board[0][1] == "O" && board[1][1] == "O" && board[2][1] == "O")
   ) {
+    console.log("verticalWin2");
     return true;
   } else if (
     (board[0][2] == "X" && board[1][2] == "X" && board[2][2] == "X") ||
     (board[0][2] == "O" && board[1][2] == "O" && board[2][2] == "O")
   ) {
+    console.log("verticalWin3");
     return true;
   } else {
     return false;
@@ -102,11 +110,13 @@ const diagonalWin = () => {
     (board[0][0] == "X" && board[1][1] == "X" && board[2][2] == "X") ||
     (board[0][0] == "O" && board[1][1] == "O" && board[2][2] == "O")
   ) {
+    console.log("diagonalWin1");
     return true;
   } else if (
-    (board[2][0] == "X" && board[1][1] == "X" && board[2][0] == "X") ||
-    (board[2][0] == "O" && board[1][1] == "O" && board[2][0] == "O")
+    (board[2][0] == "X" && board[1][1] == "X" && board[0][2] == "X") ||
+    (board[2][0] == "O" && board[1][1] == "O" && board[0][2] == "O")
   ) {
+    console.log("diagonalWin2");
     return true;
   } else {
     return false;
@@ -125,6 +135,8 @@ const resetBoard = () => {
     ["", "", ""],
     ["", "", ""],
   ];
+
+  currentMarker = "X";
 };
 
 // **BONUSES**
